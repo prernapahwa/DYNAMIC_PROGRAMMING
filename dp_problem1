@@ -1,0 +1,35 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int t[100]={0};
+int ans(int n,int sum) {
+	//int sum=0;
+	
+	if(n==0||n==1) {
+	//	cout<<"2";
+	//t[0]=2,t[1]=2;
+		return 2;
+	}
+	if(t[n]!=0) {
+		//cout<<"1";
+		return t[n];
+	}
+	for(int i=1;i<n;i++) {
+		int p=2*ans(i,sum)*ans(i-1,sum);
+		t[i]=p;
+		sum+=p;
+		//cout<<"3";
+	}
+	
+	return sum;
+}
+int main() {
+	
+	int n;
+	cin>>n;
+	//int sum=0;
+	cout<<ans(n,0);
+//	for(int i=0;i<t.size();i++) {
+//		cout<<t[i]<<" ";
+//	}
+}
