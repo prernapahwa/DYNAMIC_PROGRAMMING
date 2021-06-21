@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int ans(int n,int sum) {
+	if(n==0||n==1) {
+		return 2;
+	}
+	for(int i=1;i<n;i++){
+		sum+=2*ans(i,sum)*ans(i-1,sum);
+	}
+	//sum+=2*ans(n,sum)*ans(n-1,sum);
+	return sum;
+}
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+		int n;
+		cin>>n;
+		int sum=0;
+		cout<<ans(n,sum)<<endl;
+	}
+}
